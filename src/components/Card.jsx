@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './Card.css'
 
 class Card extends Component {
     state = {
@@ -15,7 +16,6 @@ class Card extends Component {
             const response = await fetch('https://randomuser.me/api/?results=1')
             const data = await response.json();
             console.log(data.results[0]);
-            console.log(data.results[0].location.street.number);
             this.setState({
                 photo: data.results[0].picture.large,
                 name: data.results[0].name.first + " " + data.results[0].name.last,
@@ -24,8 +24,6 @@ class Card extends Component {
                 address: data.results[0].location.street.number + " " + data.results[0].location.street.name + ", " + data.results[0].location.city + ", " + data.results[0].location.state + ", " + data.results[0].location.postcode +" " + data.results[0].location.country,
                 phone: data.results[0].cell,
                 password: data.results[0].login.password
-
-
             })
         } catch (error) {
             console.log("error is ", error.message)
